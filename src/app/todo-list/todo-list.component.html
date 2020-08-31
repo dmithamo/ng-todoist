@@ -1,27 +1,55 @@
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <td scope="col">#</td>
-      <td scope="col">Title</td>
-      <td scope="col">Description</td>
-      <td scope="col">Done</td>
-      <td scope="col">Mark Done</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let todo of todoItems; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ todo.title }}</td>
-      <td>{{ todo.description }}</td>
-      <td [ngSwitch]="todo.done">
-        <span style="color: rgb(11, 218, 11);" *ngSwitchCase="true"
-          >&#10003;</span
-        >
-        <span style="color: red;" *ngSwitchCase="false">&#10007;</span>
-      </td>
-      <td>
-        <input type="checkbox" name="mark-done" id="" [checked]="todo.done" />
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <span class="select-layout">
+    <!-- Select layout type -->
+    <fa-icon
+      (click)="toggleLayoutType(tableLayoutType)"
+      [ngClass]="{ selected: layoutType === tableLayoutType }"
+      [icon]="['fas', 'th-list']"
+    ></fa-icon>
+    <fa-icon
+      (click)="toggleLayoutType(cardLayoutType)"
+      [ngClass]="{ selected: layoutType === cardLayoutType }"
+      [icon]="['far', 'credit-card']"
+    ></fa-icon>
+  </span>
+
+  <span [ngSwitch]="layoutType === tableLayoutType">
+    <span *ngSwitchCase="true">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <td scope="col">#</td>
+            <td scope="col">Title</td>
+            <td scope="col">Description</td>
+            <td scope="col">Done</td>
+            <td scope="col">Mark Done</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let todo of todoItems; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description }}</td>
+            <td [ngSwitch]="todo.done">
+              <span style="color: rgb(11, 218, 11);" *ngSwitchCase="true"
+                >&#10003;</span
+              >
+              <span style="color: red;" *ngSwitchCase="false">&#10007;</span>
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="mark-done"
+                id=""
+                [checked]="todo.done"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
+    <span *ngSwitchCase="false">
+      <code>CARD LAYOUT IS A WIP</code>
+    </span>
+  </span>
+</div>

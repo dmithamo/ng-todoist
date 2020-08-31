@@ -1,0 +1,18 @@
+span.select-layout {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+fa-icon {
+  color: rgb(24, 24, 24);
+  font-size: 1.6em;
+  opacity: 0.5;
+  margin: 0.1em;
+  cursor: pointer;
+}
+
+fa-icon:hover,
+fa-icon.selected {
+  opacity: 1;
+}

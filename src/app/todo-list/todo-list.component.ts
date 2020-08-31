@@ -14,13 +14,27 @@ export interface Todo {
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[];
+  layoutSelected: string;
+  tableLayoutType: string;
+  cardLayoutType: string;
 
   constructor() {
     this.todos = data.todos;
+    this.tableLayoutType = 'TABLE';
+    this.cardLayoutType = 'CARD';
+    this.layoutSelected = this.tableLayoutType; // initialize with table
   }
 
   get todoItems(): Todo[] {
     return this.todos;
+  }
+
+  get layoutType(): string {
+    return this.layoutSelected;
+  }
+
+  toggleLayoutType(selected: string): void {
+    this.layoutSelected = selected;
   }
 
   ngOnInit(): void {}
