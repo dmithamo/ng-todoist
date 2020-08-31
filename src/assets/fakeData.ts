@@ -3,7 +3,7 @@ export const data = {
   todos: [
     {
       title: 'QT',
-      description: 'Read the Bible - and maybe pray',
+      description: 'Read the Bible - and pray',
       done: true,
     },
     {
@@ -13,7 +13,7 @@ export const data = {
     },
     {
       title: 'Learn Ts and Angular',
-      description: 'Put in some work towards mastering UI develeopment',
+      description: 'Put in some work towards mastering UI development',
       done: true,
     },
     {

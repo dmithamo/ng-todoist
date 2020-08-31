@@ -9,8 +9,9 @@ import { faThList } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { NewTodoFormComponent } from './new-todo-form/new-todo-form.component';
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, CopyrightComponent],
+  declarations: [AppComponent, TodoListComponent, CopyrightComponent, NewTodoFormComponent],
   imports: [BrowserModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
