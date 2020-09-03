@@ -9,6 +9,10 @@ div.fullpage-overlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(26, 26, 26, 0.452);
+  background-color: rgba(116, 102, 102, 0.171);
   z-index: 2;
+}
+
+button {
+  outline: none !important;
 }

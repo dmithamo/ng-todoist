@@ -8,11 +8,15 @@ import { faCreditCard } from '@fortawesome/free-regular-svg-icons';
 import { faThList } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { CopyrightComponent } from './copyright/copyright.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { NewTodoFormComponent } from './new-todo-form/new-todo-form.component';
 import { TodoItemCardComponent } from './todo-item-card/todo-item-card.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, CopyrightComponent, NewTodoFormComponent, TodoItemCardComponent],
+  declarations: [
+    AppComponent,
+    TodoListComponent,
+    CopyrightComponent,
+    TodoItemCardComponent,
+  ],
   imports: [BrowserModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
