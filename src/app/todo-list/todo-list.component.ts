@@ -37,5 +37,12 @@ export class TodoListComponent implements OnInit {
     this.layoutSelected = selected;
   }
 
+  toggleDone(title: string): void {
+    this.todos = this.todos.map((t) => ({
+      ...t,
+      done: t.title === title ? !t.done : t.done,
+    }));
+  }
+
   ngOnInit(): void {}
 }
