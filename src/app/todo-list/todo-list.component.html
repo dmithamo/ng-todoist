@@ -50,7 +50,9 @@
       </table>
     </span>
     <span *ngSwitchCase="false">
-      <code>CARD LAYOUT IS A WIP</code>
+      <span *ngFor="let todo of todoItems">
+        <app-todo-item-card [todo]="todo"></app-todo-item-card>
+      </span>
     </span>
   </span>
 </div>

@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { data } from '../../assets/fakeData';
-
-export interface Todo {
-  title: string;
-  description: string;
-  done: boolean;
-}
+import { TodoItem, TodoItemsList } from './todo.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,20 +7,20 @@ export interface Todo {
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-  todos: Todo[];
+  todos: TodoItemsList;
   layoutSelected: string;
   tableLayoutType: string;
   cardLayoutType: string;
 
   constructor() {
-    this.todos = data.todos;
+    this.todos = new TodoItemsList();
     this.tableLayoutType = 'TABLE';
     this.cardLayoutType = 'CARD';
     this.layoutSelected = this.tableLayoutType; // initialize with table
   }
 
-  get todoItems(): Todo[] {
-    return this.todos;
+  get todoItems(): TodoItem[] {
+    return this.todos.listTodos();
   }
 
   get layoutType(): string {
@@ -38,10 +32,11 @@ export class TodoListComponent implements OnInit {
   }
 
   toggleDone(title: string): void {
-    this.todos = this.todos.map((t) => ({
-      ...t,
-      done: t.title === title ? !t.done : t.done,
-    }));
+    this.todos.toggleDone(title);
+  }
+
+  addNew(title: string, description: string): void {
+    this.todos.createNew(title, description);
   }
 
   ngOnInit(): void {}
