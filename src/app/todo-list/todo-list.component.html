@@ -2,18 +2,18 @@
   <span class="select-layout">
     <!-- Select layout type -->
     <fa-icon
-      (click)="toggleLayoutType(tableLayoutType)"
-      [ngClass]="{ selected: layoutType === tableLayoutType }"
+      (click)="toggleLayoutType(layoutOptions.table)"
+      [ngClass]="{ selected: layoutType === layoutOptions.table }"
       [icon]="['fas', 'th-list']"
     ></fa-icon>
     <fa-icon
-      (click)="toggleLayoutType(cardLayoutType)"
-      [ngClass]="{ selected: layoutType === cardLayoutType }"
+      (click)="toggleLayoutType(layoutOptions.card)"
+      [ngClass]="{ selected: layoutType === layoutOptions.card }"
       [icon]="['far', 'credit-card']"
     ></fa-icon>
   </span>
 
-  <span [ngSwitch]="layoutType === tableLayoutType">
+  <span [ngSwitch]="layoutType === layoutOptions.table">
     <span *ngSwitchCase="true">
       <table class="table table-striped">
         <thead class="thead-dark">
@@ -80,12 +80,12 @@
       <div class="from-group mb-2 input-with-label">
         <input
           class="form-control"
-          [ngClass]="{ errored: titleHasErrs }"
+          [ngClass]="{ errored: errors.title !== '' }"
           type="text"
           placeholder="What's the title?"
           #title
         />
-        <span [ngSwitch]="titleHasErrs">
+        <span [ngSwitch]="errors.title !== ''">
           <p class="error-message" *ngSwitchCase="true">
             {{ errors.title }}
           </p>
@@ -96,12 +96,12 @@
       <div class="form-group mb-2 input-with-label">
         <input
           class="form-control"
-          [ngClass]="{ errored: descriptionHasErrs }"
+          [ngClass]="{ errored: this.errors.description !== '' }"
           type="text"
           placeholder="A short description is helpful"
           #description
         />
-        <span [ngSwitch]="descriptionHasErrs">
+        <span [ngSwitch]="this.errors.description !== ''">
           <p class="error-message" *ngSwitchCase="true">
             {{ errors.description }}
           </p>

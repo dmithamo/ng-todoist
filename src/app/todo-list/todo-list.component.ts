@@ -9,28 +9,25 @@ import { TodoItem, TodoItemsList } from './todo.model';
 export class TodoListComponent implements OnInit {
   todos: TodoItemsList;
   layoutSelected: string;
-  tableLayoutType: string;
-  cardLayoutType: string;
+  layoutOptions: { card: string; table: string };
 
   // NEW TODO ITEM FORM
   showNewForm = false;
   defaultErrState = { title: '', description: '', submit: '' };
   errors = this.defaultErrState;
 
-  titleHasErrs = false;
-  descriptionHasErrs = false;
-
   constructor() {
+    this.layoutOptions = {
+      card: 'CARD',
+      table: 'TABLE',
+    };
+
     this.todos = new TodoItemsList();
-    this.tableLayoutType = 'TABLE';
-    this.cardLayoutType = 'CARD';
-    this.layoutSelected = this.tableLayoutType; // initialize with table
+    this.layoutSelected = this.layoutOptions.table; // initialize with table
   }
 
   toggleShowNewForm(): void {
     this.errors = this.defaultErrState;
-    this.titleHasErrs = false;
-    this.descriptionHasErrs = false;
     this.showNewForm = !this.showNewForm;
   }
 
@@ -43,14 +40,12 @@ export class TodoListComponent implements OnInit {
 
     if (title.value === '') {
       this.errors = { ...this.errors, title: 'A title is required' };
-      this.titleHasErrs = true;
     }
     if (description.value === '') {
       this.errors = {
         ...this.errors,
         description: 'A description is required',
       };
-      this.descriptionHasErrs = true;
     }
   }
 
